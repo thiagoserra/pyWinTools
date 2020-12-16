@@ -22,9 +22,11 @@ def join_path(*args):
     return os.path.normpath('/'.join(val))
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-save_dir = join_path(dir_path, 'images')
+#save_dir = join_path(dir_path, 'images')
+save_dir = 'C:\\Users\\thiag\\OneDrive\\Imagens'
 if not os.path.exists(save_dir):
-    os.makedirs(save_dir)
+    save_dir = join_path(dir_path, 'images')
+#    os.makedirs(save_dir)
 
 
 def set_windows_wallpaper(pic_path):
@@ -90,6 +92,7 @@ def download_wallpaper(idx=0, use_wallpaper=True):
         now = datetime.datetime.now()
         date = now - datetime.timedelta(days=int(idx))
         pic_path = join_path(save_dir, ''.join([date.strftime('bing_wp_%d-%m-%Y'), '.jpg']))
+        print(f'Image saved: {pic_path}')
         if os.path.isfile(pic_path):
             print('Image of', date.strftime('%d-%m-%Y'), 'already downloaded.')
             if use_wallpaper:
@@ -107,4 +110,4 @@ def download_wallpaper(idx=0, use_wallpaper=True):
 
 if __name__ == "__main__":
     download_wallpaper()
-    # download_old_wallpapers(minus_days=False)
+    #download_old_wallpapers(minus_days=False)

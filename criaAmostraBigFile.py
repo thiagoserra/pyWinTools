@@ -19,14 +19,14 @@ class criaAmostraBigFile():
         err = 1
         self.arqorigem = ''
         while err == 1:
-            self.arqorigem = str(input('[i] Informe o caminho do arquivo de origem: ')).strip()
+            self.arqorigem = str(input('[?] Informe o caminho do arquivo de origem: ')).strip()
             if self.arqorigem == 'q':
                 return False
             if os.path.exists(self.arqorigem):
-                print('[i] Arquivo de origem encontrado!')
+                print(f'[i] Arquivo {self.arqorigem} de origem encontrado!')
                 err = 0
             else:
-                print('[i] Arquivo de origem não encontrado! Informado: ', self.arqorigem)
+                print('[?] Arquivo de origem não encontrado! Informado: ', self.arqorigem)
 
         err = 1
         self.xLinhas = 1

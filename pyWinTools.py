@@ -32,27 +32,27 @@ class pyWinTools():
     def splash(self):
         clear()
         print()
+        print('_' * 80)
         print('Py' * 40)
+        print('-' * 80)
         print("--- pyWinTools - v.{}".format(self.versao))
         print("--- GitHub: @thiagoserra | https://github.com/thiagoserra/pyWinTools")
+        print('_' * 80)
         print('pY' * 40)
-        print()
+        print('-' * 80)
 
     def menu(self, msg = ''):
         self.splash()
-        print('*' * 80)
-        print(' ' * 25, '*** OPÇÕES ***')
-        print('*' * 80)
-        print()
-        print('-' * 45)
+        print(' ' * 20, '*** ESCOLHA ENTRE AS OPÇÕES ***')
+        print('-' * 80)
         print('-- [1]   Baixar WallPaper Bing do Dia')
         print('-- [2]   Baixar 20 últimos WallPapers Bing')
         print('-- [3]   Verficar servidores VPN CAIXA')
         print('-- [4]   Verficar meu IP Externo')
         print('-- [5]   Criar amostra de um arquivo GRANDE')
-
         print('-' * 45)
         print('-- [99]  Sair')
+        print('-' * 45)
         if msg != '':
             print()
             print('-' * 45)
@@ -61,11 +61,12 @@ class pyWinTools():
         print()
 
         obj = None
-        op = str(input('[i] Informe uma opção válida: ')).strip()
+        op = str(input('[?] Informe uma opção válida: ')).strip()
         try:
             op = int(op)
         except ValueError:
             print('[x] Opção {} inválida!'.format(op))
+            sleep(2)
             self.menu()
 
         if op == 1:
@@ -116,11 +117,13 @@ class pyWinTools():
             self.menu(msg)
         elif op == 99:
             self.splash()
+            print('-' * 80)
             print('!' * 80)
-            print('!!! Programa Finalizado !!!')
+            print('!!! Obrigado por usar !!!')
             print('!' * 80)
             print('!! bye ' * 2, '!!')
-            sleep(3)
+            sleep(2)
+            print('-' * 80)
             sys.stdout.flush()
             os._exit(0)
         else:

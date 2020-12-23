@@ -86,6 +86,7 @@ class pyWinTools():
             print('!' * 80)
             print('!!! Programa Finalizado !!!')
             print('!' * 80)
+            sleep(5)
             sys.stdout.flush()
             os._exit(0)
         else:

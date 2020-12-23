@@ -10,7 +10,8 @@ from Util import *
 from BingWall import BingWall
 from VPNCx import VPNCx
 from criaAmostraBigFile import criaAmostraBigFile
-import urllib.request
+from NetWork import NetWork
+
 
 class pyWinTools():
 
@@ -47,15 +48,14 @@ class pyWinTools():
         print('-' * 80)
         print('-- [1]   Baixar WallPaper Bing do Dia')
         print('-- [2]   Baixar 20 últimos WallPapers Bing')
-        print('-- [3]   Verficar servidores VPN CAIXA')
+        print('-- [3]   Verficar Servidores VPN CAIXA')
         print('-- [4]   Verficar meu IP Externo')
-        print('-- [5]   Criar amostra de um arquivo GRANDE')
+        print('-- [5]   Verificar Interfaces de Rede')
+        print('-- [6]   Criar Amostra de um arquivo GRANDE')
         print('-' * 45)
         print('-- [99]  Sair')
         print('-' * 45)
         if msg != '':
-            print()
-            print('-' * 45)
             print('[msg>] ', msg)
             print('-' * 80)
         print()
@@ -100,18 +100,28 @@ class pyWinTools():
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
         elif op == 4:
-            msg = self.externalIp()
+            obj = NetWork()
+            msg = obj.externalIp()
             if not msg :
                 print('[x] Erro obtendo ip externo! (op 4)')
             else:
                 msg = f' Meu IP Externo -> {msg}.'
             self.menu(msg)
         elif op == 5:
+            obj = NetWork()
+            msg = obj.show_networks()
+            input('[?] Tecle em qualquer tecla para continuar...')
+            if not msg :
+                print('[x] Erro obtendo dados de rede! (op 5)')
+            else:
+                msg = '[i] Rotina finalizada com sucesso!'
+            self.menu(msg)
+        elif op == 6:
             obj = criaAmostraBigFile()
             msg = obj.copiar()
             sleep(5)
             if not msg :
-                msg = '[x] Erro executando rotina! (op 5)'
+                msg = '[x] Erro executando rotina! (op 6)'
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
@@ -136,14 +146,6 @@ class pyWinTools():
             del(obj)
         except:
             pass
-
-    def externalIp(self):
-        ex_ip = ''
-        try:
-            ex_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
-            return str(ex_ip).strip()
-        except:
-            return False
 
 
 n = pyWinTools()

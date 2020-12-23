@@ -12,7 +12,8 @@ Pequenos utilitários em Python 3 para automação de tarefas no Windows.
 
 **v.3.0.beta (branch v3)**
 * Verificar IP Externo
-* Cria Amostra de arquivo (serve para copiar as primeiras linhas de um arqivo muitoooo grannndeeee)
+* Verifica dados das interfaces de rede do computador local
+* Cria Amostra (Possibilita copiar as primeiras linhas de um arqivo muitoooo grannndeeee para um novo arquivo!)
 
 
 ## Como rodar

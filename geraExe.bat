@@ -1,8 +1,7 @@
 @echo off
 echo -------- Gerando executavel...
-pyinstaller.exe --debug=bootloader --name VPNDisponivel --onefile --noupx --icon="icon.ico" servidores.py
+pyinstaller.exe --debug=bootloader --name pyWinTools --onefile --noupx --icon="icon.ico" pyWinTools.py
 echo -------- Exe criado!
 echo -------- Copiando arquivo...
-del ..\Executaveis\VPNDisponivel.exe
-copy dist\VPNDisponivel.exe ..\Executaveis\
+copy dist\pyWinTools.exe ..\
 echo -------- Finalizado!

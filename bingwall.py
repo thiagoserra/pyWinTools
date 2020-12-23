@@ -1,9 +1,9 @@
+#! /usr/bin/python3
 """
 Classe BingWall
 
     Classe responsavel pela verificação e Download de WallPapers diários do BING
 """
-#! /usr/bin/python3
 # -------------------------------------------------------------------------------------------------
 # Based on version of:
 #   Author: Maximilian Muth <mail@maxi-muth.de>

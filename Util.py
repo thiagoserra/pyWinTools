@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 """
 Util.py
 
@@ -5,7 +6,6 @@ Util.py
     @autor: Thiago Serra <thiagonce@gmail.com>
 
 """
-
 import os
 import sys
 import datetime as dt

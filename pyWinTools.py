@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 """
 Classe pyWinTools
 
@@ -102,7 +103,7 @@ class pyWinTools():
             if not msg :
                 print('[x] Erro obtendo ip externo! (op 4)')
             else:
-                msg = f'[i] IP Externo {msg}.'
+                msg = f' Meu IP Externo -> {msg}.'
             self.menu(msg)
         elif op == 5:
             obj = criaAmostraBigFile()

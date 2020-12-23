@@ -1,10 +1,11 @@
 #! /usr/bin/python3
-# -------------------------------------------------------------------------------------------------
-#   Author: Thiago Serra <thiagonce@gmail.com>
-#   https://github.com/thiagoserra/wintools
-#   License: MIT
-#   Description: pesquisa servidores disponiveis para conexao pelo VPN da CAIXA
-# -------------------------------------------------------------------------------------------------
+"""
+Classe VPNCx
+
+    Verifica disponibilidade dos servidores VPN CAIXA
+    @autor: Thiago Serra <thiagonce@gmail.com>
+
+"""
 import requests
 from Util import *
 from operator import itemgetter
@@ -43,12 +44,11 @@ class VPNCx():
         print('*' * 80)
 
         op = ''
-        while op not in ('A', 'X'):
-            op = str(input("[?] 'A' para tentar novamente, 'X' para sair: ")).strip().upper()
+        while op not in ('A', 'M'):
+            op = str(input("[?] 'A' para tentar novamente, 'M' volta para o menu: ")).strip().upper()
 
         if op == 'A':
             clear()
             self.consulta()
         else:
-            sleep(3)
             return True

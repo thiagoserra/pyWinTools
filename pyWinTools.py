@@ -6,11 +6,14 @@ Classe pyWinTools
 
 """
 from Util import *
-import BingWall
+from BingWall import BingWall
+from VPNCx import VPNCx
+from criaAmostraBigFile import criaAmostraBigFile
+import urllib.request
 
 class pyWinTools():
 
-    __versao = '2.0'
+    __versao = '3.0'
 
     @property
     def versao(self):
@@ -44,9 +47,14 @@ class pyWinTools():
         print('-- [1]   Baixar WallPaper Bing do Dia')
         print('-- [2]   Baixar 20 últimos WallPapers Bing')
         print('-- [3]   Verficar servidores VPN CAIXA')
+        print('-- [4]   Verficar meu IP Externo')
+        print('-- [5]   Criar amostra de um arquivo GRANDE')
+
         print('-' * 45)
         print('-- [99]  Sair')
         if msg != '':
+            print()
+            print('-' * 45)
             print('[msg>] ', msg)
             print('-' * 80)
         print()
@@ -63,30 +71,55 @@ class pyWinTools():
             msg = ''
             obj = BingWall()
             msg = obj.download_wallpaper()
-
+            sleep(5)
             if not msg :
-                print('[x] Erro executando rotina!')
+                msg = '[x] Erro executando rotina! (op 1)'
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
-            sleep(5)
             self.menu(msg)
         elif op == 2:
             msg = ''
             obj = BingWall()
             msg = obj.download_old_wallpapers()
-
+            sleep(5)
             if not msg :
-                print('[x] Erro executando rotina!')
+                msg = '[x] Erro executando rotina! (op 2)'
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
+            self.menu(msg)
+        elif op == 3:
+            msg = ''
+            obj = VPNCx()
+            msg = obj.consulta()
             sleep(5)
+            if not msg :
+                msg = '[x] Erro executando rotina! (op 3)'
+            else:
+                msg = '[i] Rotina finalizada com sucesso!'
+            self.menu(msg)
+        elif op == 4:
+            msg = self.externalIp()
+            if not msg :
+                print('[x] Erro obtendo ip externo! (op 4)')
+            else:
+                msg = f'[i] IP Externo {msg}.'
+            self.menu(msg)
+        elif op == 5:
+            obj = criaAmostraBigFile()
+            msg = obj.copiar()
+            sleep(5)
+            if not msg :
+                msg = '[x] Erro executando rotina! (op 5)'
+            else:
+                msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
         elif op == 99:
             self.splash()
             print('!' * 80)
             print('!!! Programa Finalizado !!!')
             print('!' * 80)
-            sleep(5)
+            print('!! bye ' * 2, '!!')
+            sleep(3)
             sys.stdout.flush()
             os._exit(0)
         else:
@@ -99,6 +132,14 @@ class pyWinTools():
             del(obj)
         except:
             pass
+
+    def externalIp(self):
+        ex_ip = ''
+        try:
+            ex_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+            return str(ex_ip).strip()
+        except:
+            return False
 
 
 n = pyWinTools()

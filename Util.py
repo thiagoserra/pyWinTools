@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 """
 Util.py
 
@@ -5,11 +6,10 @@ Util.py
     @autor: Thiago Serra <thiagonce@gmail.com>
 
 """
-
 import os
 import sys
 import datetime as dt
-from time import sleep
+from time import sleep, time
 
 clear = lambda: os.system('cls')
 
@@ -24,3 +24,9 @@ def check():
         print('!' * 80)
         sys.stdout.flush()
         os._exit(0)
+
+
+def formatarTimer(start, end):
+    hours, rem = divmod(end - start, 3600)
+    minutes, seconds = divmod(rem, 60)
+    return "{:0>2}:{:0>2}:{:05.5f}".format(int(hours), int(minutes), seconds)

@@ -1,9 +1,9 @@
+#! /usr/bin/python3
 """
 Classe BingWall
 
     Classe responsavel pela verificação e Download de WallPapers diários do BING
 """
-#! /usr/bin/python3
 # -------------------------------------------------------------------------------------------------
 # Based on version of:
 #   Author: Maximilian Muth <mail@maxi-muth.de>
@@ -16,17 +16,18 @@ Classe BingWall
 #   alteracao do path de salvamento
 #   adicionado ao pacote wintools (https://github.com/thiagoserra/wintools)
 # -------------------------------------------------------------------------------------------------
-
 import datetime
 from urllib.request import urlopen, urlretrieve
 from xml.dom import minidom
 from Util import *
 
-
 class BingWall():
 
     def __init__(self):
         clear()
+        print('*' * 80)
+        print('* * * Baixar WallPaper Diário do Bing * * *')
+        print('*' * 80)
         self.pic_path = ''
         self.dir_path = os.path.dirname(os.path.realpath(__file__))
         self.save_dir = 'C:\\Users\\thiag\\OneDrive\\Imagens'

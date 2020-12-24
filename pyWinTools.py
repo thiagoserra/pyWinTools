@@ -49,9 +49,10 @@ class pyWinTools():
         print('-- [1]   Baixar WallPaper Bing do Dia')
         print('-- [2]   Baixar 20 últimos WallPapers Bing')
         print('-- [3]   Verficar Servidores VPN CAIXA')
-        print('-- [4]   Verficar meu IP Externo')
-        print('-- [5]   Verificar Interfaces de Rede')
-        print('-- [6]   Criar Amostra de um arquivo GRANDE')
+        print('-- [4]   Criar Amostra de um arquivo GRANDE')
+        print('-- [5]   Verficar meu IP Externo')
+        print('-- [6]   Verificar Interfaces de Rede')
+        print('-- [7]   Verificar dados da rede Wifi')
         print('-' * 45)
         print('-- [99]  Sair')
         print('-' * 45)
@@ -99,7 +100,7 @@ class pyWinTools():
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
-        elif op == 4:
+        elif op == 6:
             obj = NetWork()
             msg = obj.externalIp()
             if not msg :
@@ -116,12 +117,21 @@ class pyWinTools():
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
-        elif op == 6:
+        elif op == 4:
             obj = criaAmostraBigFile()
             msg = obj.copiar()
             sleep(5)
             if not msg :
                 msg = '[x] Erro executando rotina! (op 6)'
+            else:
+                msg = '[i] Rotina finalizada com sucesso!'
+            self.menu(msg)
+        elif op == 7:
+            obj = NetWork()
+            msg = obj.show_wifi_data()
+            input('[?] Tecle em qualquer tecla para continuar...')
+            if not msg :
+                print('[x] Erro obtendo dados de rede! (op 5)')
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
@@ -132,7 +142,6 @@ class pyWinTools():
             print('!!! Obrigado por usar !!!')
             print('!' * 80)
             print('!! bye ' * 2, '!!')
-            sleep(2)
             print('-' * 80)
             sys.stdout.flush()
             os._exit(0)

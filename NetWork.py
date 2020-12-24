@@ -6,7 +6,8 @@ Classe NetWork
     @autor: Thiago Serra <thiagonce@gmail.com>
 
 """
-from subprocess import check_output
+from operator import truediv
+import subprocess
 from xml.etree.ElementTree import fromstring
 from ipaddress import IPv4Interface, IPv6Interface
 import urllib.request
@@ -17,7 +18,7 @@ from Util import *
 class NetWork():
     def __init__(self):
         clear()
-        self.cmd = 'wmic.exe nicconfig where "IPEnabled  = True" get ipaddress,MACAddress,IPSubnet,DNSHostName,Caption,DefaultIPGateway /format:rawxml'
+        self.cmd = ''
         self.nics = []
         print('*' * 80)
         print('* * * Consulta Dados de Rede * * *')
@@ -42,7 +43,8 @@ class NetWork():
             return False
 
     def getNics(self):
-        xml_text = check_output(self.cmd, creationflags=8)
+        self.cmd = 'wmic.exe nicconfig where "IPEnabled  = True" get ipaddress,MACAddress,IPSubnet,DNSHostName,Caption,DefaultIPGateway /format:rawxml'
+        xml_text = subprocess.check_output(self.cmd, creationflags=8)
         xml_root = fromstring(xml_text)
         keyslookup = {
             'DNSHostName' : 'hostname',
@@ -91,3 +93,13 @@ class NetWork():
                 print('%s : %s'%(k,v))
             print()
         return True
+
+
+    def show_wifi_data(self):
+        self.cmd = 'netsh wlan show interfaces'
+        try:
+            out = subprocess.check_output(self.cmd,stderr=subprocess.STDOUT,shell=True)
+            print(out.decode('cp1252'))
+            return True
+        except:
+            return False

@@ -100,7 +100,7 @@ class pyWinTools():
             else:
                 msg = '[i] Rotina finalizada com sucesso!'
             self.menu(msg)
-        elif op == 6:
+        elif op == 5:
             obj = NetWork()
             msg = obj.externalIp()
             if not msg :
@@ -108,7 +108,7 @@ class pyWinTools():
             else:
                 msg = f' Meu IP Externo -> {msg}.'
             self.menu(msg)
-        elif op == 5:
+        elif op == 6:
             obj = NetWork()
             msg = obj.show_networks()
             input('[?] Tecle em qualquer tecla para continuar...')

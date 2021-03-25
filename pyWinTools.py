@@ -7,7 +7,7 @@ Classe pyWinTools
 
 """
 from Util import *
-from BingWall import BingWall
+from bingwall import bingwall
 from VPNCx import VPNCx
 from criaAmostraBigFile import criaAmostraBigFile
 from NetWork import NetWork
@@ -47,7 +47,7 @@ class pyWinTools():
         print(' ' * 20, '*** ESCOLHA ENTRE AS OPÇÕES ***')
         print('-' * 80)
         print('-- [1]   Baixar WallPaper Bing do Dia')
-        print('-- [2]   Baixar 20 últimos WallPapers Bing')
+        print('-- [2]   Baixar "x" últimos WallPapers Bing')
         print('-- [3]   Verficar Servidores VPN CAIXA')
         print('-- [4]   Criar Amostra de um arquivo GRANDE')
         print('-- [5]   Verficar meu IP Externo')
@@ -72,7 +72,7 @@ class pyWinTools():
 
         if op == 1:
             msg = ''
-            obj = BingWall()
+            obj = bingwall()
             msg = obj.download_wallpaper()
             sleep(5)
             if not msg :
@@ -82,8 +82,15 @@ class pyWinTools():
             self.menu(msg)
         elif op == 2:
             msg = ''
-            obj = BingWall()
-            msg = obj.download_old_wallpapers()
+            max = str(input('[?] Quantos papeis de parede deseja baixar? [1 a 20]: '))
+            try:
+                max = int(max.strip())
+                if max < 0 or max > 20:
+                    max = False
+            except ValueError:
+                max = False
+            obj = bingwall()
+            msg = obj.download_old_wallpapers(max)
             sleep(5)
             if not msg :
                 msg = '[x] Erro executando rotina! (op 2)'

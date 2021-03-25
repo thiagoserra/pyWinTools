@@ -13,9 +13,10 @@ from time import sleep, time
 
 clear = lambda: os.system('cls')
 
+
 def check():
     now = dt.datetime.now()
-    vencimento = dt.datetime.strptime('31/01/2021', '%d/%m/%Y')
+    vencimento = dt.datetime.strptime('31/03/2021', '%d/%m/%Y')
     if now >= vencimento:
         print('!' * 80)
         print('[i] Versão expirada. Baixe a nova versão!')

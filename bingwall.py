@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 """
-Classe BingWall
+Classe bingwall
 
     Classe responsavel pela verificação e Download de WallPapers diários do BING
 """
@@ -21,7 +21,7 @@ from urllib.request import urlopen, urlretrieve
 from xml.dom import minidom
 from Util import *
 
-class BingWall():
+class bingwall():
 
     def __init__(self):
         clear()
